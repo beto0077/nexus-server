@@ -16,8 +16,9 @@ router.get("/", async (req, res) => {
 
         res.json(response.data);
     } catch (error) {
-        console.error("Error fetching giphy data:", error.message);
-        res.status(500).json({ error: "Internal server error" });
+        console.error("Error status:", error.status);
+        console.error("Error fetching giphy data:", error.response.data);
+        res.status(error.status).json({ error: error.response.data });
     }
 });
 
